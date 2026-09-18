@@ -69,6 +69,7 @@ local function addHalo(ent,dat)
 
 end
 -- setters
+__e2setcost(5)
 e2function void entity:setHalo(number red, number green, number blue, number alpha, number xy, number pass, number add, number wall)
 
 	local h = {r=red,g=green,b=blue,a=alpha,size=xy,passes=math.Clamp(pass,1,10),additive=add,ignorez=wall}
@@ -142,51 +143,57 @@ e2function void entity:setHaloEnabled(number on)
 end
 -- getters
 e2function vector entity:getHaloColor()
-	
-	if not halos[this:EntIndex()] then return end
+
 	local h = halos[this:EntIndex()]
+	if not h then return end
 	return Vector(h.r,h.g,h.b)
 	
 end
 
 e2function number entity:getHaloAlpha()
 
-	if not halos[this:EntIndex()] then return end
-	return halos[this:EntIndex()].a
+	local h = halos[this:EntIndex()]
+	if not h then return end
+	return h.a
 	
 end
 
 e2function number entity:getHaloSize()
 	
-	if not halos[this:EntIndex()] then return end		
-	return halos[this:EntIndex()].size
+	local h = halos[this:EntIndex()]
+	if not h then return end	
+	return h.size
 	
 end
 
 e2function number entity:getHaloPasses()
 	
-  	if not halos[this:EntIndex()] then return end		
-	return halos[this:EntIndex()].passes
+  	local h = halos[this:EntIndex()]
+	if not h then return end
+	return h.passes
 	
 end
 
 e2function number entity:getHaloAdd()
 	
-  	if not halos[this:EntIndex()] then return end		
-	return halos[this:EntIndex()].additive
+  	local h = halos[this:EntIndex()]
+	if not h then return end	
+	return h.additive
 	
 end
 
 e2function number entity:getHaloZDepth()
 	
- 	if not halos[this:EntIndex()] then return end		
-	return halos[this:EntIndex()].ignorez
+ 	local h = halos[this:EntIndex()]
+	if not h then return end	
+	return h.ignorez
 	
 end
 
 e2function number entity:getHaloEnabled()
 	
-  	if not halos[this:EntIndex()] then return end		
-	return halos[this:EntIndex()].enabled
+  	local h = halos[this:EntIndex()]
+	if not h then return end	
+	return h.enabled
 	
 end
