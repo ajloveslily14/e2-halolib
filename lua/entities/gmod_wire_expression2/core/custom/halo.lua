@@ -35,7 +35,7 @@ hook.Add("EntityRemoved","e2halocleanup",function(ent)
 	if halos[ent:EntIndex()] then 
 		removeHalo(ent)
 	end
-	
+
 end)
 
 util.AddNetworkString("e2halofull")
@@ -71,14 +71,14 @@ end
 -- setters
 e2function void entity:setHalo(number red, number green, number blue, number alpha, number xy, number pass, number add, number wall)
 
-	local h = {r=red,g=green,b=blue,a=alpha,size=xy,passes=pass,additive=add,ignorez=wall}
+	local h = {r=red,g=green,b=blue,a=alpha,size=xy,passes=math.Clamp(pass,1,10),additive=add,ignorez=wall}
 	addHalo(this,h)
 
 end
 
 e2function void entity:setHalo(vector color, number alpha, number xy, number pass, number add, number wall)
 
-	local h = {r=color[1],g=color[2],b=color[3],a=alpha,size=xy,passes=pass,additive=add,ignorez=wall}
+	local h = {r=color[1],g=color[2],b=color[3],a=alpha,size=xy,passes=math.Clamp(pass,1,10),additive=add,ignorez=wall}
 	addHalo(this,h)
 
 end
@@ -112,9 +112,8 @@ e2function void entity:setHaloSize(number sizeXY)
 end
 
 e2function void entity:setHaloPasses(number passCount)
-	
 	if not halos[this:EntIndex()] then return end
-	addHalo(this,{passes=passCount})
+	addHalo(this,{passes=math.Clamp(passCount,1,10)})
 	
 end
 
