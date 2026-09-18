@@ -1,5 +1,6 @@
 {
 	"title":"[Wiremod]Expression2 halos",
 	"type": "tool",
-	"tags": ["Build","Fun"]
+	"tags": ["Build","Fun"],
+	"ignore": ["*.git",".git/*","*.md"]
 }
